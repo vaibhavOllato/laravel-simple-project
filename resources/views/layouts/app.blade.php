@@ -119,9 +119,12 @@ a{
             <h3>Ollato</h3>
             <hr>
             <a href="{{ route('dashboard') }}">Dashboard</a>
-            <a href="/profile">Profile</a>
-            <a href="/settings">Settings</a>
-            <a href="{{route('logout')}}">logout</a>
+            <a href="{{ route('profile') }}">Profile</a>
+            {{-- <a href="/settings">Settings</a> --}}
+              <a href="/settings">Summery report</a>
+                <a href="/settings">Report</a>
+                {{-- <hr> --}}
+            {{-- <a href="{{route('logout')}}">logout</a> --}}
 
             <form action="{{ route('logout') }}" method="GET">
                 @csrf

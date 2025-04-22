@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Login;
 use App\Http\Controllers\Register;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +34,9 @@ Route::post('/register', [Register::class, 'submit'])->name('register.submit');
 
 // Route::get('/dashboard',[DashboardController::class, 'index']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('userauth');
+
+Route::get('/profile',[ProfileController::class, 'show'])->name('profile');
+Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
 
 Route::get('/logout', function () {
