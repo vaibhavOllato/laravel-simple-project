@@ -1,31 +1,36 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class Login extends Controller
 {
-      public function show()
+    public function show()
     {
         return view('login'); 
     }
 
-    // handle login
     public function authenticate(Request $request)
     {
-        $credentials = $request->validate ([
-            'email' => ['required', 'email'],
-            'password'=>['required'],
-        ]);
-
-        if (Auth:: attempt($credentials)) {
-            $request -> session()->regenerate();
-            return redirect()->intended('dashboard');
+        $user = User::where('email', $request->email)->first();
+    
+        if ($user) {
+            if (Hash::check($request->password, $user->password)) {
+                session([
+                    'user_id' => $user->id,
+                    'user_name' => $user->name,
+                    'user_email' => $user->email,
+                    'phone' => $user->phone,
+                ]);
+                return redirect()->route('dashboard');
+            } else {
+                return back()->with('error', 'Wrong password');
+            }
+        } else {
+            return back()->with('error', 'User not found');
         }
-
-        return back()->with('error','Invalid email or password.');
     }
+    
 }

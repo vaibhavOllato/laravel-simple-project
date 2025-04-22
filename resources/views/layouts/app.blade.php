@@ -121,8 +121,9 @@ a{
             <a href="{{ route('dashboard') }}">Dashboard</a>
             <a href="/profile">Profile</a>
             <a href="/settings">Settings</a>
+            <a href="{{route('logout')}}">logout</a>
 
-            <form action="{{ route('logout') }}" method="POST">
+            <form action="{{ route('logout') }}" method="GET">
                 @csrf
                 <button type="submit">Logout</button>
             </form>

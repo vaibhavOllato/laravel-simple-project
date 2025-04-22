@@ -116,6 +116,11 @@
     <div class="login-container">
         <h2>Login</h2>
 
+        @if (session('error'))
+    <div class="error">{{ session('error') }}</div>
+@endif
+
+
         <!-- Display error message if needed -->
         {{-- <div class="error">Invalid email or password.</div> --}}
 
