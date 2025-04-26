@@ -5,6 +5,8 @@ use App\Http\Controllers\Login;
 use App\Http\Controllers\Register;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PasswordController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,10 +40,29 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::get('/profile',[ProfileController::class, 'show'])->name('profile');
 Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
+Route::get('/change-password',[PasswordController::class, 'changeForm'])->name('settings');
+
+Route::post('/change-password', [PasswordController::class, 'updatePassword'])->name('password.update');
+
+Route::get('/instructions', function () {
+    return view('instructions');
+})->name('instructions');
+
+
+// Route::get('/logout', function () {
+//     Auth::logout();
+//     request()->session()->invalidate();
+//     request()->session()->regenerateToken();
+//     return redirect('/login');
+// })->name('logout');
+
 
 Route::get('/logout', function () {
-    Auth::logout();
-    request()->session()->invalidate();
-    request()->session()->regenerateToken();
+   
+    session()->flush();
+
+    
+    session()->regenerateToken();
+
     return redirect('/login');
 })->name('logout');

@@ -12,12 +12,47 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            /* background: linear-gradient(135deg, #06b6d4, #3b82f6); */
+            background: linear-gradient(to right, #57385c, #a15f99);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
+
+        .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-control {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #0dcaf0; /* light blue */
+    box-shadow: 0 0 5px rgba(13, 202, 240, 0.5);
+}
+
 
         .register-container {
             background-color: #ffffff;
@@ -68,13 +103,13 @@
         }
 
         input:focus {
-            border-color: #06b6d4;
+            border-color: #57385c;
             outline: none;
         }
 
         .btn {
             width: 100%;
-            background-color: #06b6d4;
+            background-color: #57385c;
             color: white;
             padding: 12px;
             margin-top: 25px;
@@ -87,7 +122,7 @@
         }
 
         .btn:hover {
-            background-color: #0891b2;
+            background-color: #6d4a73;
         }
 
         .error {
@@ -107,7 +142,7 @@
         }
 
         .footer-text a {
-            color: #06b6d4;
+            color: #6d4a73;
             text-decoration: none;
             font-weight: 600;
         }
@@ -163,10 +198,28 @@
                 </div>
             </div>
 
-            <div class="form-group" style="margin-top: 15px;">
-                <label for="password_confirmation">Confirm Password</label>
-                <input type="password" name="password_confirmation" id="password_confirmation" required>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select name="gender" id="gender" class="form-control">
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            
+                <div class="form-group">
+                    <label for="password_confirmation">Confirm Password</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
+                </div>
             </div>
+            
+
+            {{-- <div class="form-group" style="margin-top: 15px;">
+
+             
+            </div> --}}
 
             <button type="submit" class="btn">Register</button>
 

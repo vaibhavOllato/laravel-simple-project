@@ -30,6 +30,7 @@ class Register extends Controller
             'email'=>$request->email,
             'password'=>Hash::make($request->password),
             'phone' => $request->phone,
+            'gender' => $request->gender,
         ]);
 
         return redirect('/login')->with('success', 'Registration successful. Please log in.');

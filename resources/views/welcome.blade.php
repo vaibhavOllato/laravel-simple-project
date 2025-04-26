@@ -58,7 +58,7 @@
         .btn {
             padding: 15px 30px;
             margin: 15px;
-            background-color: #06b6d4;
+            background-color: #57385c;
             color: white;
             border: none;
             border-radius: 30px;
@@ -71,11 +71,11 @@
             width: 200px;
         }
         .btn:hover {
-            background-color: #0891b2;
+            background-color: #6d4a73;
             transform: translateY(-5px);
         }
         .btn:active {
-            background-color: #06b6d4;
+            background-color: #6d4a73;
             transform: translateY(2px);
         }
         .footer-text {
@@ -121,9 +121,9 @@
             <a href="/login" class="btn">Login</a>
             <a href="/register" class="btn">Register</a>
         </div>
-        <div class="footer-text">
+        {{-- <div class="footer-text">
             Already have an account? <a href="/login">Login here</a>
-        </div>
+        </div> --}}
     </div>
 
 </body>
